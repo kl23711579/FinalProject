@@ -32,12 +32,15 @@ public class DB extends SQLiteOpenHelper {
     /* 如果 Android 載入時找不到生成的資料庫檔案，就會觸發 onCreate */
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        // 建立應用程式需要的表格
     }
 
     /* 如果資料庫結構有改變了就會觸發 onUpgrade */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // 刪除原有的表格
+        // 呼叫onCreate建立新版的表格
+        onCreate(db);
 
     }
 }
