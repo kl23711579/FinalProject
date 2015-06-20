@@ -1,6 +1,7 @@
 package com.example.oao.finalproject;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ public class MainActivity extends ActionBarActivity {
     private EditText DateInput;
     private int InputDay, InputMonth, InputYear;
     static final int DATE_DIALOG_ID = 0;
+    static final int CALENDAR_VIEW_ID = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,24 +47,8 @@ public class MainActivity extends ActionBarActivity {
 
     private Button.OnClickListener DateListener = new Button.OnClickListener(){
         public void onClick(View v){
-            Dialog dialog = new Dialog(getBaseContext());
-            Toast.makeText(getBaseContext(),"1" ,Toast.LENGTH_LONG).show();
-            dialog.setContentView(R.layout.mycalendar);
-
-            CalendarView cal = (CalendarView)dialog.findViewById(R.id.calenderview1);
-
-            Log.v("Test","1");
-
-            cal.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-                @Override
-                public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                    InputDay = dayOfMonth;
-                    InputMonth = month;
-                    InputYear = year;
-                    DateInput.setText(InputDay + "/" + InputMonth + "/" + InputYear);
-                }
-            });
-            dialog.show();
+            Intent intent = new Intent(MainActivity.this, MyCalendar.class);
+            startActivityForResult(intent, CALENDAR_VIEW_ID);
         }
     };
 
