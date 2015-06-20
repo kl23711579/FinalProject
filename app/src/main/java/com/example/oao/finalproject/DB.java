@@ -11,7 +11,7 @@ public class DB extends SQLiteOpenHelper {
 
     private final static int VERSION = 1;
     private final static String DBName = "mDB.db";
-    private final static String _TableName = "mTable";
+    //private final static String _TableName = "mTable";
     // 資料庫物件，固定的欄位變數
     private static SQLiteDatabase database;
 
@@ -33,6 +33,9 @@ public class DB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // 建立應用程式需要的表格
+        try{
+            db.execSQL(DBuse.CREATE_TABLE);
+        } catch (Exception e){ }
     }
 
     /* 如果資料庫結構有改變了就會觸發 onUpgrade */
