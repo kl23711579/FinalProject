@@ -1,6 +1,7 @@
 package com.example.oao.finalproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,9 +31,25 @@ public class MyCalendar extends Activity{
 
         @Override
         public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth){
-            mYear = year;
-            mMonth = month;
-            mDay = dayOfMonth;
+            //Intent
+            Intent intent = new Intent();
+            intent.setClass(MyCalendar.this, MainActivity.class);
+
+            //Bundle
+            Bundle MyDate = new Bundle();
+
+            //Package data
+            MyDate.putInt("InputYear", year);
+            MyDate.putInt("InputMonth", month);
+            MyDate.putInt("InputDay", dayOfMonth);
+
+            //return data
+            intent.putExtras(MyDate);
+            setResult(RESULT_OK, intent);
+
+            //finish activity
+            finish();
+
         }
     };
 

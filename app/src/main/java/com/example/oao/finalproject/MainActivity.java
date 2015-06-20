@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void initialDate(){
-        Log.v("Test","1");
+        //Log.v("Test","1");
         final Calendar c = Calendar.getInstance();
         InputDay = c.get(Calendar.DAY_OF_MONTH);
         InputMonth = c.get(Calendar.MONTH) + 1;
@@ -51,6 +51,22 @@ public class MainActivity extends ActionBarActivity {
             startActivityForResult(intent, CALENDAR_VIEW_ID);
         }
     };
+
+    //MyCalendar return data output
+    @Override
+    protected void onActivityResult(int requestcode, int resultCode, Intent data){
+        switch (requestcode){
+            case CALENDAR_VIEW_ID:
+                if(resultCode == RESULT_OK){
+                    Bundle MyDate = data.getExtras();
+
+                    InputYear = MyDate.getInt("InputYear");
+                    InputMonth = MyDate.getInt("InputMonth") + 1;
+                    InputDay = MyDate.getInt("InputDay");
+                    DateInput.setText(InputDay + "/" + InputMonth + "/" + InputYear);
+                }
+        }
+    }
 
 
     @Override
