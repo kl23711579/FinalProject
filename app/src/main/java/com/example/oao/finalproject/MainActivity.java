@@ -20,7 +20,7 @@ import java.util.Calendar;
 public class MainActivity extends ActionBarActivity {
 
     private Button DateInputChoose;
-    private EditText DateInput;
+    private EditText DateInput, Item, Price, Other;
     private int InputDay, InputMonth, InputYear;
     static final int DATE_DIALOG_ID = 0;
     static final int CALENDAR_VIEW_ID = 1;
@@ -37,6 +37,9 @@ public class MainActivity extends ActionBarActivity {
         DateInput = (EditText)findViewById(R.id.DateInput);
         btnclear = (Button)findViewById(R.id.btnclear);
         btnenter = (Button)findViewById(R.id.btnenter);
+        Item = (EditText)findViewById(R.id.txtbuyitem);
+        Price = (EditText)findViewById(R.id.txtprice);
+        Other = (EditText)findViewById(R.id.txtother);
 
         initialDate();
         dbuse = new DBuse(getApplicationContext());
@@ -75,16 +78,25 @@ public class MainActivity extends ActionBarActivity {
     //Button Enter Action
     private Button.OnClickListener enterListener = new Button.OnClickListener(){
         public void onClick(View v){
-            Log.v("Test","3");
-            dbuse.Insert(2015,6,20,"water",20,"WTF");
+            Log.v("Test", "3");
+            dbuse.Insert(InputYear, InputMonth, InputDay, Item.getText().toString(), Integer.parseInt(Price.getText().toString()), Other.getText().toString());
+            //Clear edittext
+            Item.setText("");
+            Price.setText("");
+            Other.setText("");
         }
         //Test Data
         //2015,6,20,water,20,WTF
     };
 
+    //Button Clear
     private Button.OnClickListener clearListener = new Button.OnClickListener(){
         public void onClick(View v){
-            dbuse.Delete(1);
+            //Clear edittext
+            Item.setText("");
+            Price.setText("");
+            Other.setText("");
+
         }
     };
 

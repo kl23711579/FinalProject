@@ -73,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtprice"
+            android:inputType="number"
             android:hint="請輸入物品價格" />
     </LinearLayout>
     <!-- 備註 -->
