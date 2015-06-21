@@ -2,6 +2,7 @@ package com.example.oao.finalproject;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 /**
  * Created by OAO on 2015/6/20.
@@ -31,6 +32,7 @@ public class DBuse {
 
     // 建構子，一般的應用都不需要修改
     public DBuse(Context context) {
+        Log.v("Test", "1");
         db = DB.getDatabase(context);
     }
 
@@ -41,6 +43,7 @@ public class DBuse {
 
     //Insert to DB
     public void Insert(int year, int month, int day, String item, int value, String other){
+        Log.v("Test","2");
         String str = "INSERT INTO " + TABLE_NAME + "(year, month, day, item, price, other) " +
                         "VALUES (" + year  + ", " +
                                      month + ", " +
