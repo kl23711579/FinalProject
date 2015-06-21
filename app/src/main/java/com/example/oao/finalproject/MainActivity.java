@@ -57,6 +57,17 @@ public class MainActivity extends ActionBarActivity {
     private Button.OnClickListener DateListener = new Button.OnClickListener(){
         public void onClick(View v){
             Intent intent = new Intent(MainActivity.this, MyCalendar.class);
+
+            //Bundle
+            Bundle Date = new Bundle();
+
+            //Package Date
+            Date.putInt("InputYear", InputYear);
+            Date.putInt("InputMonth", InputMonth);
+            Date.putInt("InputDay", InputDay);
+
+            //Send Data
+            intent.putExtras(Date);
             startActivityForResult(intent, CALENDAR_VIEW_ID);
         }
     };

@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 
+import java.util.Calendar;
+
 /**
  * Created by OAO on 2015/6/18.
  */
@@ -23,6 +25,24 @@ public class MyCalendar extends Activity{
         setContentView(R.layout.mycalendar);
 
         MyCalendar = (CalendarView)findViewById(R.id.calenderview1);
+
+        //Get intent Data
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+
+        //Use Data
+        mYear = bundle.getInt("InputYear");
+        mMonth = bundle.getInt("InputMonth") - 1;  //Because Month in array is turemonth+1 so in this should -1
+        mDay = bundle.getInt("InputDay");
+
+        //Set Calendar Date
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, mYear);
+        calendar.set(Calendar.MONTH, mMonth);
+        calendar.set(Calendar.DAY_OF_MONTH, mDay);
+
+        long milliTime = calendar.getTimeInMillis();
+        MyCalendar.setDate(milliTime);
 
         MyCalendar.setOnDateChangeListener(DateChangeListener);
     }
