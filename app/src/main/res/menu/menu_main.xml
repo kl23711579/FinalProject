@@ -3,4 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/Enter" android:title="輸入品項"
+        android:orderInCategory="0" app:showAsAction="never" />
+    <item android:id="@+id/History" android:title="紀錄"
+        android:orderInCategory="1" app:showAsAction="never" />
+    <item android:id="@+id/stat" android:title="統計"
+        android:orderInCategory="2" app:showAsAction="never" />
 </menu>

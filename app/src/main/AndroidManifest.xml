@@ -20,6 +20,10 @@
             android:name=".MyCalendar"
             android:label="Calendar"
         />
+        <activity
+            android:name=".History"
+            android:label="History"
+        />
     </application>
 
 </manifest>

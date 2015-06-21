@@ -1,12 +1,18 @@
 package com.example.oao.finalproject;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by OAO on 2015/6/20.
  */
+
 public class DBuse {
     /* Table Name */
     private static final String TABLE_NAME = "purchase";
@@ -43,7 +49,7 @@ public class DBuse {
 
     //Insert to DB
     public void Insert(int year, int month, int day, String item, int value, String other){
-        Log.v("Test","2");
+        Log.v("Test", "2");
         String str = "INSERT INTO " + TABLE_NAME + "(year, month, day, item, price, other) " +
                         "VALUES (" + year  + ", " +
                                      month + ", " +
@@ -67,4 +73,15 @@ public class DBuse {
     /* insert = "INSERT INTO table01(year, month, day, product, price) " +
                                 "values ("+n+", "+year+", "+month+", "+day+", '"+product+"', "+price+")";
                        */
+    public Cursor get_Item_Price(int year, int month, int day){
+        /* SELECT _id, item, price FROM purchase WHERE year=year AND month=month AND day=day*/
+        String str = "SELECT " + KEY_ID + "," + ITEM_COLUMN + "," + PRICE_COLUMN + " FROM " + TABLE_NAME +
+                     " WHERE year=" + year + " AND month=" + month + " AND day=" + day;
+        /*String str = "SELECT * FROM " + TABLE_NAME +
+                " WHERE year=" + year + " AND month=" + month + " AND day=" + day;*/
+        Log.v("Test", "7");
+        Cursor cursor = db.rawQuery(str, null);
+        Log.v("Test", "9");
+        return cursor;
+    }
 }
