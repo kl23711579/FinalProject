@@ -1,5 +1,7 @@
 package com.example.oao.finalproject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -29,7 +31,7 @@ public class History extends ActionBarActivity{
     private MyAdapter myAdapter;
     private int InputDay, InputMonth, InputYear;
     private TextView HistoryDateInput;
-    private Button btnChooseDate;
+    private Button btnChooseDate, btnDel;
     static final int CALENDAR_VIEW_ID = 1;
     private DBuse dbuse1;
     Cursor cursor;
@@ -41,6 +43,7 @@ public class History extends ActionBarActivity{
         HisList = (ListView)findViewById(R.id.List);
         HistoryDateInput = (TextView)findViewById(R.id.HistoryDateInput);
         btnChooseDate = (Button)findViewById(R.id.HistoryDateInputChoose);
+        btnDel = (Button)findViewById(R.id.HistoryDel);
 
         initialDate();
 
@@ -79,6 +82,32 @@ public class History extends ActionBarActivity{
         }
     };
 
+    /** ¼u¥X¹ï¸Ü®Ø */
+    public void myDialog(final int _ID) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Delete?")
+                .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dbuse1.Delete(_ID);
+
+                        history_List = dbuse1.get_Item_Price(InputYear, InputMonth, InputDay);
+                        myAdapter = new MyAdapter(History.this, history_List);
+                        HisList.setAdapter(myAdapter);
+                    }
+                })
+                .setPositiveButton("No", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+        AlertDialog ad = builder.create();
+        ad.show();
+    }
+
     //MyCalendar return data output
     @Override
     protected void onActivityResult(int requestcode, int resultCode, Intent data){
@@ -92,21 +121,13 @@ public class History extends ActionBarActivity{
                     InputDay = MyDate.getInt("InputDay");
                     HistoryDateInput.setText(InputDay + "/" + InputMonth + "/" + InputYear);
 
+                    history_List = dbuse1.get_Item_Price(InputYear, InputMonth, InputDay);
+                    myAdapter = new MyAdapter(this, history_List);
+                    HisList.setAdapter(myAdapter);
                 }
         }
     }
 
-    /*public void MyAdapter(Cursor cursor){
-        if(cursor != null && cursor.getCount() >= 0){
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-            R.layout.myhistorylayout,
-            cursor,
-            new String[] {"item", "price"},
-            new int[] {R.id.Historyitem, R.id.Historyprice},
-            0);
-            HisList.setAdapter(adapter);
-        }
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

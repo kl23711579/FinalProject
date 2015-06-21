@@ -66,7 +66,7 @@ public class DBuse {
 
     //Delete
     public void Delete(int _id){
-        String str = "DELETE FROM " + TABLE_NAME + "WHERE _id=" + KEY_ID;
+        String str = "DELETE FROM " + TABLE_NAME + " WHERE _id=" + _id;
         db.execSQL(str);
     }
 
