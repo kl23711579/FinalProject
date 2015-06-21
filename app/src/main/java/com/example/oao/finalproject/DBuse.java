@@ -13,6 +13,7 @@ import java.util.List;
  * Created by OAO on 2015/6/20.
  */
 
+
 public class DBuse {
     /* Table Name */
     private static final String TABLE_NAME = "purchase";
@@ -73,7 +74,8 @@ public class DBuse {
     /* insert = "INSERT INTO table01(year, month, day, product, price) " +
                                 "values ("+n+", "+year+", "+month+", "+day+", '"+product+"', "+price+")";
                        */
-    public Cursor get_Item_Price(int year, int month, int day){
+    public List<HistoryView> get_Item_Price(int year, int month, int day){
+        List<HistoryView> Item_Price = new ArrayList<>();
         /* SELECT _id, item, price FROM purchase WHERE year=year AND month=month AND day=day*/
         String str = "SELECT " + KEY_ID + "," + ITEM_COLUMN + "," + PRICE_COLUMN + " FROM " + TABLE_NAME +
                      " WHERE year=" + year + " AND month=" + month + " AND day=" + day;
@@ -82,6 +84,12 @@ public class DBuse {
         Log.v("Test", "7");
         Cursor cursor = db.rawQuery(str, null);
         Log.v("Test", "9");
-        return cursor;
+        for(int i = 0; i < cursor.getCount(); i++){
+            cursor.moveToPosition(i);
+            HistoryView ip = new HistoryView(cursor.getInt(0), cursor.getString(1), cursor.getInt(2));
+            Item_Price.add(i, ip);
+        }
+        Log.v("Test", "10");
+        return Item_Price;
     }
 }

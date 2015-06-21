@@ -26,6 +26,7 @@ public class History extends ActionBarActivity{
 
     private ListView HisList;
     List<HistoryView>history_List = new ArrayList<HistoryView>();
+    private MyAdapter myAdapter;
     private int InputDay, InputMonth, InputYear;
     private TextView HistoryDateInput;
     private Button btnChooseDate;
@@ -54,8 +55,9 @@ public class History extends ActionBarActivity{
         HistoryDateInput.setText(InputDay + "/" + InputMonth + "/" + InputYear);
 
         dbuse1 = new DBuse(this);
-        cursor = dbuse1.get_Item_Price(InputYear, InputMonth, InputDay);
-        MyAdapter(cursor);
+        history_List = dbuse1.get_Item_Price(InputYear, InputMonth, InputDay);
+        myAdapter = new MyAdapter(this, history_List);
+        HisList.setAdapter(myAdapter);
     }
 
     private Button.OnClickListener DateListener = new Button.OnClickListener(){
@@ -90,13 +92,11 @@ public class History extends ActionBarActivity{
                     InputDay = MyDate.getInt("InputDay");
                     HistoryDateInput.setText(InputDay + "/" + InputMonth + "/" + InputYear);
 
-                    cursor = dbuse1.get_Item_Price(InputYear, InputMonth, InputDay);
-                    MyAdapter(cursor);
                 }
         }
     }
 
-    public void MyAdapter(Cursor cursor){
+    /*public void MyAdapter(Cursor cursor){
         if(cursor != null && cursor.getCount() >= 0){
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
             R.layout.myhistorylayout,
@@ -106,7 +106,7 @@ public class History extends ActionBarActivity{
             0);
             HisList.setAdapter(adapter);
         }
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

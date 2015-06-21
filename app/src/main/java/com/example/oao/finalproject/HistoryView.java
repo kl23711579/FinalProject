@@ -6,29 +6,24 @@ import android.widget.Button;
  * Created by OAO on 2015/6/21.
  */
 public class HistoryView {
-    private int type;
-    /*
-    type = 0  Date
-    type = 1  Item
-    type = 2  Price
-     */
 
+    private int _ID;
     private String Item;
     private int Price;
     private Button btnDel;
 
-    public HistoryView(int type, String Item, int Price){
-        this.type = type;
+    public HistoryView(int _ID, String Item, int Price){
+        this._ID = _ID;
         this.Item = Item;
         this.Price = Price;
     }
 
-    public int getType(){
-        return type;
+    public int get_ID(){
+        return _ID;
     }
 
-    public void setType(int type){
-        this.type = type;
+    public void set_ID(int _ID){
+        this._ID = _ID;
     }
 
     public String getItem(){
