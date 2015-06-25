@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 日期 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:text="年："
+                android:id="@+id/StatYearMonth"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="onClick"
+                android:textSize="25dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTotalCost"
+        android:text="總共花："/>
+
+</LinearLayout>

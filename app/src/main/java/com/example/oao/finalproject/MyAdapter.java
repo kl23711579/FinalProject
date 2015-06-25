@@ -43,17 +43,17 @@ public class MyAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent){
         ViewHolder holder = null;
         if(convertView == null){
-            // ¨ú±olistItem®e¾¹ view
+            // å–å¾—listItemå®¹å™¨ view
             convertView = myInflater.inflate(R.layout.myhistorylayout, null);
 
-            // «ØºclistItem¤º®eview
+            // å»ºæ§‹listItemå…§å®¹view
             holder = new ViewHolder(
                     (TextView) convertView.findViewById(R.id.HistoryItem),
                     (TextView) convertView.findViewById(R.id.HistoryPrice),
                     (Button) convertView.findViewById(R.id.HistoryDel)
             );
 
-            // ³]¸m®e¾¹¤º®e
+            // è¨­ç½®å®¹å™¨å…§å®¹
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -63,7 +63,7 @@ public class MyAdapter extends BaseAdapter{
 
         holder.HistoryItem.setText(HistoryList.getItem());
         holder.HistoryPrice.setText(Integer.toString(HistoryList.getPrice()));
-        //³]©w«ö¶sºÊÅ¥¨Æ¥ó¤Î¶Ç¤J MainActivity ¹êÅé
+        //è¨­å®šæŒ‰éˆ•ç›£è½äº‹ä»¶åŠå‚³å…¥ MainActivity å¯¦é«”
         holder.btnDel.setOnClickListener(new ItemButton_Click(this.history, position));
 
         return convertView;

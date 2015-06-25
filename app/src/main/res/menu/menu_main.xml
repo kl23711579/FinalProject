@@ -8,6 +8,6 @@
         android:orderInCategory="0" app:showAsAction="never" />
     <item android:id="@+id/History" android:title="紀錄"
         android:orderInCategory="1" app:showAsAction="never" />
-    <item android:id="@+id/stat" android:title="統計"
+    <item android:id="@+id/Stat" android:title="統計"
         android:orderInCategory="2" app:showAsAction="never" />
 </menu>

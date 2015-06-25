@@ -82,7 +82,7 @@ public class History extends ActionBarActivity{
         }
     };
 
-    /** ¼u¥X¹ï¸Ü®Ø */
+
     public void myDialog(final int _ID) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Delete?")

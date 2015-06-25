@@ -25,7 +25,6 @@ public class DB extends SQLiteOpenHelper {
     public static SQLiteDatabase getDatabase(Context context) {
         if (database == null || !database.isOpen()) {
             database = new DB(context, DBName, null, VERSION).getWritableDatabase();
-            Log.v("Test", database.getPath());
             //database.getPath();
         }
 
@@ -36,7 +35,6 @@ public class DB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // 建立應用程式需要的表格
-        Log.v("Test", "5");
         try{
             db.execSQL(DBuse.CREATE_TABLE);
         } catch (Exception e){ }

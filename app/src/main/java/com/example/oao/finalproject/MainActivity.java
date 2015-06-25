@@ -77,7 +77,6 @@ public class MainActivity extends ActionBarActivity {
     //Button Enter Action
     private Button.OnClickListener enterListener = new Button.OnClickListener(){
         public void onClick(View v){
-            Log.v("Test", "3");
             dbuse.Insert(InputYear, InputMonth, InputDay, Item.getText().toString(), Integer.parseInt(Price.getText().toString()), Other.getText().toString());
             //Clear edittext
             Item.setText("");
@@ -131,10 +130,12 @@ public class MainActivity extends ActionBarActivity {
 
         Intent intent = new Intent();
         switch (item.getItemId()){
-            case R.id.Enter:
-                break;
             case R.id.History:
                 intent.setClass(MainActivity.this,History.class);
+                startActivity(intent);
+                break;
+            case R.id.Stat:
+                intent.setClass(MainActivity.this, Stat.class);
                 startActivity(intent);
                 break;
         }

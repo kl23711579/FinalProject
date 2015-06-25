@@ -24,6 +24,10 @@
             android:name=".History"
             android:label="History"
         />
+        <activity
+            android:name=".Stat"
+            android:label="Stat"
+        />
     </application>
 
 </manifest>
