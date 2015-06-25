@@ -16,7 +16,7 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:onClick="onClick"
-                android:textSize="25dp" />
+                android:textSize="22dp" />
 
     </LinearLayout>
 
@@ -24,6 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtTotalCost"
-        android:text="總共花："/>
+        android:text="總共花："
+        android:textColor="#000000"
+        android:textSize="30dp" />
 
 </LinearLayout>

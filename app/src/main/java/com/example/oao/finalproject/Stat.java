@@ -23,15 +23,18 @@ import java.util.Calendar;
  */
 public class Stat extends ActionBarActivity{
 
-    private TextView StatYearMonth;
+    private TextView StatYearMonth, TotalCost;
     private int InputMonth, InputYear;
+    private DBuse dbuse;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stat);
 
         StatYearMonth = (TextView)findViewById(R.id.StatYearMonth);
+        TotalCost = (TextView)findViewById(R.id.txtTotalCost);
 
+        dbuse = new DBuse(getApplicationContext());
         initialDate();
 
         StatYearMonth.setOnClickListener(YearListener);
@@ -43,11 +46,13 @@ public class Stat extends ActionBarActivity{
         InputYear = c.get(Calendar.YEAR);
         String str = "Year：" + InputYear + "   Month：" + InputMonth;
         StatYearMonth.setText(str);
+        TotalCost.setText(InputYear + "年" + InputMonth + "月總共花" + dbuse.CalcSum(InputYear, InputMonth) + "元");
     }
 
     private TextView.OnClickListener YearListener= new TextView.OnClickListener(){
         public void onClick(View v){
             chooseYM();
+            TotalCost.setText(InputYear + "年" + InputMonth + "月總共花" + dbuse.CalcSum(InputYear, InputMonth) + "元");
         }
     };
 
@@ -84,14 +89,12 @@ public class Stat extends ActionBarActivity{
         Cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                d.dismiss();
             }
         });
 
         d.show();
     }
-
-
 
     public NumberPicker createNP(Dialog d, int id, int min, int Max, int num){
         NumberPicker np = (NumberPicker)d.findViewById(id);
