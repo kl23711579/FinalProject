@@ -26,6 +26,7 @@ public class Stat extends ActionBarActivity{
     private TextView StatYearMonth, TotalCost;
     private int InputMonth, InputYear;
     private DBuse dbuse;
+    private Button Bar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +34,13 @@ public class Stat extends ActionBarActivity{
 
         StatYearMonth = (TextView)findViewById(R.id.StatYearMonth);
         TotalCost = (TextView)findViewById(R.id.txtTotalCost);
+        Bar = (Button)findViewById(R.id.btnBar);
 
         dbuse = new DBuse(getApplicationContext());
         initialDate();
 
         StatYearMonth.setOnClickListener(YearListener);
+        Bar.setOnClickListener(BarListener);
     }
 
     private void initialDate(){
@@ -53,6 +56,29 @@ public class Stat extends ActionBarActivity{
         public void onClick(View v){
             chooseYM();
             TotalCost.setText(InputYear + "年" + InputMonth + "月總共花" + dbuse.CalcSum(InputYear, InputMonth) + "元");
+        }
+    };
+
+    private Button.OnClickListener BarListener = new Button.OnClickListener(){
+        public void onClick(View v){
+            //Intent
+            Intent intent = new Intent();
+            intent.setClass(Stat.this, MyBarChart.class);
+
+            //Bundle
+            Bundle bundle = new Bundle();
+
+            //Package Data
+            bundle.putInt("Year", InputYear);
+            bundle.putInt("Month", InputMonth);
+
+            //Send Data
+            Log.v("Test", "22");
+            intent.putExtras(bundle);
+            Log.v("Test", "25");
+            startActivity(intent);
+            Log.v("Test", "26");
+
         }
     };
 

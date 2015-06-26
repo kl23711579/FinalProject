@@ -28,6 +28,10 @@
             android:name=".Stat"
             android:label="Stat"
         />
+        <activity
+            android:name=".MyBarChart"
+            android:label="MyBarChart"
+        />
     </application>
 
 </manifest>
