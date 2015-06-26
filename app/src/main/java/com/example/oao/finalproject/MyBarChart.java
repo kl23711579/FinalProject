@@ -1,6 +1,5 @@
 package com.example.oao.finalproject;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -13,8 +12,6 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.DataSet;
-import com.github.mikephil.charting.utils.ValueFormatter;
 
 import java.util.ArrayList;
 
@@ -54,12 +51,12 @@ public class MyBarChart extends ActionBarActivity{
         MyBar.setPinchZoom(false);
 
         // draw shadows for each bar that show the maximum value
-        // mChart.setDrawBarShadow(true);
+        // MyBar.setDrawBarShadow(true);
 
-        // mChart.setDrawXLabels(false);
+        // MyBar.setDrawXLabels(false);
 
         MyBar.setDrawGridBackground(false);
-        // mChart.setDrawYLabels(false);
+        // MyBar.setDrawYLabels(false);
 
         mTf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
 

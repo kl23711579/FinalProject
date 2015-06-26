@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
 
 public class DBuse {
     /* Table Name */
-    private static final String TABLE_NAME = "purchase";
+    public static final String TABLE_NAME = "purchase";
 
     // 編號表格欄位名稱，固定不變
     public static final String KEY_ID = "_id"; /* int */
@@ -39,7 +38,6 @@ public class DBuse {
 
     // 建構子，一般的應用都不需要修改
     public DBuse(Context context) {
-        Log.v("Test", "1");
         db = DB.getDatabase(context);
     }
 

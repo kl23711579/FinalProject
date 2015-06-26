@@ -31,7 +31,7 @@ public class History extends ActionBarActivity{
     private MyAdapter myAdapter;
     private int InputDay, InputMonth, InputYear;
     private TextView HistoryDateInput;
-    private Button btnChooseDate, btnDel;
+    private Button btnChooseDate;
     static final int CALENDAR_VIEW_ID = 1;
     private DBuse dbuse1;
     Cursor cursor;
@@ -43,7 +43,6 @@ public class History extends ActionBarActivity{
         HisList = (ListView)findViewById(R.id.List);
         HistoryDateInput = (TextView)findViewById(R.id.HistoryDateInput);
         btnChooseDate = (Button)findViewById(R.id.HistoryDateInputChoose);
-        btnDel = (Button)findViewById(R.id.HistoryDel);
 
         initialDate();
 
@@ -141,11 +140,19 @@ public class History extends ActionBarActivity{
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        Intent intent = new Intent();
+        switch (item.getItemId()){
+            case R.id.Enter:
+                intent.setClass(History.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.Stat:
+                intent.setClass(History.this,Stat.class);
+                startActivity(intent);
+                finish();
+                break;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
         }
 
         return super.onOptionsItemSelected(item);

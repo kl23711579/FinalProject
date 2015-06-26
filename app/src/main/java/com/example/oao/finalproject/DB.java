@@ -25,7 +25,6 @@ public class DB extends SQLiteOpenHelper {
     public static SQLiteDatabase getDatabase(Context context) {
         if (database == null || !database.isOpen()) {
             database = new DB(context, DBName, null, VERSION).getWritableDatabase();
-            //database.getPath();
         }
 
         return database;
@@ -44,6 +43,7 @@ public class DB extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // 刪除原有的表格
+        db.execSQL("DROP TABLE IF EXISTS " + DBuse.TABLE_NAME);
         // 呼叫onCreate建立新版的表格
         onCreate(db);
 

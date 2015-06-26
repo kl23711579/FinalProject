@@ -1,8 +1,6 @@
 package com.example.oao.finalproject;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,9 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -22,11 +18,9 @@ public class MainActivity extends ActionBarActivity {
     private Button DateInputChoose;
     private EditText DateInput, Item, Price, Other;
     private int InputDay, InputMonth, InputYear;
-    static final int DATE_DIALOG_ID = 0;
     static final int CALENDAR_VIEW_ID = 1;
     private Button btnenter, btnclear;
     private DBuse dbuse;
-    private DB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,8 +133,7 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
                 break;
         }
-
-
+        
         return super.onOptionsItemSelected(item);
     }
 }

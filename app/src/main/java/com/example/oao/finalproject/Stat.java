@@ -1,14 +1,10 @@
 package com.example.oao.finalproject;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,12 +69,8 @@ public class Stat extends ActionBarActivity{
             bundle.putInt("Month", InputMonth);
 
             //Send Data
-            Log.v("Test", "22");
             intent.putExtras(bundle);
-            Log.v("Test", "25");
             startActivity(intent);
-            Log.v("Test", "26");
-
         }
     };
 

@@ -1,7 +1,5 @@
 package com.example.oao.finalproject;
 
-import android.widget.Button;
-
 /**
  * Created by OAO on 2015/6/21.
  */
@@ -10,7 +8,6 @@ public class HistoryView {
     private int _ID;
     private String Item;
     private int Price;
-    private Button btnDel;
 
     public HistoryView(int _ID, String Item, int Price){
         this._ID = _ID;
